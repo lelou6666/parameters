@@ -30,7 +30,7 @@ module Parameters
     def initialize(object,name,type=nil,description=nil,value=nil)
       super(object,name,type,description)
 
-      if (self.value.nil? && value)
+      if (self.value.nil? && !value.nil?)
         self.value = case value
                      when Proc
                        if value.arity > 0

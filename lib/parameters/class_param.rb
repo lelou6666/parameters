@@ -30,7 +30,11 @@ module Parameters
     #
     # Sets the value of the class param.
     #
+<<<<<<< HEAD
     # @param [Proc, Object] value
+=======
+    # @param [Object] new_value
+>>>>>>> refs/remotes/postmodern/master
     #   The new value of the class param.
     #
     # @return [Object]

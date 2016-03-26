@@ -76,8 +76,9 @@ module Parameters
   # @api public
   #
   def parameter(name,options={})
-    name    = name.to_sym
+    name = name.to_sym
 
+<<<<<<< HEAD
     instance_eval %{
       # define the reader method for the parameter
       def #{name}
@@ -93,6 +94,22 @@ module Parameters
         parameters.set?(#{name.inspect})
       end
     }
+=======
+    # define the reader method for the parameter
+    meta_def name do
+      get_param(name).value
+    end
+
+    # define the writer method for the parameter
+    meta_def :"#{name}=" do |new_value|
+      get_param(name).value = new_value
+    end
+
+    # define a tester method for the parameter
+    meta_def :"#{name}?" do
+      !!get_param(name).value
+    end
+>>>>>>> refs/remotes/postmodern/master
 
     # create the new parameter
     new_param = InstanceParam.new(

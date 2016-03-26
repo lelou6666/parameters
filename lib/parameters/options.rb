@@ -16,7 +16,7 @@ module Parameters
       Types::Time     => 'TIME',
       Types::DateTime => 'DATE|TIME',
       Types::Date     => 'DATE',
-      Types::Regexp   => 'REGEXP',
+      Types::Regexp   => '/REGEXP/',
       Types::URI      => 'URI',
       Types::Array    => 'VALUE [...]',
       Types::Set      => 'VALUE [...]',
@@ -155,7 +155,7 @@ module Parameters
         opts.on(*args) do |value|
           if param.value.nil?
             param.value = value
-          else
+          elsif value
             param.value.merge!(param.coerce(value))
           end
         end
@@ -163,7 +163,7 @@ module Parameters
         opts.on(*args) do |value|
           if param.value.nil?
             param.value = value
-          else
+          elsif value
             param.value += param.coerce(value)
           end
         end
@@ -179,9 +179,6 @@ module Parameters
     #
     # @param [Parameter] object
     #   The Class or Object which included Parameters.
-    #
-    # @param [OptionParser] opts
-    #   The option parser to define the parameter options within.
     #
     # @yield [opts]
     #   If a block is given, it will be passed the newly created OptionParser.
@@ -212,9 +209,13 @@ module Parameters
     end
 
     # accept pattern for Hashes
-    OptionParser.accept(Hash, /[^\s:]*:[^\s:]*(\s+[^\s:]*:[^\s:])*/) do |s,|
+    OptionParser.accept(Hash, /((?:\\.|[^\\:])*):((?:\\.|[^\\:])*)/) do |s,k,v|
       if s
-        Hash[s.split.map { |key_value| key_value.split(':',2) }]
+        unescape = lambda { |string|
+          string.gsub(/\\./) { |match| match[1,1] }
+        }
+
+        {unescape[k] => unescape[v]}
       end
     end
 

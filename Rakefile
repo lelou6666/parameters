@@ -1,14 +1,16 @@
+# encoding: utf-8
+
 require 'rubygems'
 require 'rake'
 
 begin
-  gem 'ore-tasks', '~> 0.4'
-  require 'ore/tasks'
+  gem 'rubygems-tasks', '~> 0.1'
+  require 'rubygems/tasks'
 
-  Ore::Tasks.new
+  Gem::Tasks.new
 rescue LoadError => e
   warn e.message
-  warn "Run `gem install ore-tasks` to install 'ore/tasks'."
+  warn "Run `gem install rubygems-tasks` to install 'rubygems/tasks'."
 end
 
 begin
@@ -21,7 +23,8 @@ rescue LoadError => e
     abort "Please run `gem install rspec` to install RSpec."
   end
 end
-task :test => :spec
+
+task :test    => :spec
 task :default => :spec
 
 begin
@@ -34,3 +37,4 @@ rescue LoadError => e
     abort "Please run `gem install yard` to install YARD."
   end
 end
+task :doc => :yard

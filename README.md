@@ -1,7 +1,7 @@
 # Parameters
 
-* [Source](http://github.com/postmodern/parameters)
-* [Issues](http://github.com/postmodern/parameters/issues)
+* [Source](https://github.com/postmodern/parameters)
+* [Issues](https://github.com/postmodern/parameters/issues)
 * [Documentation](http://rubydoc.info/gems/parameters/frames)
 * [Email](mailto:postmodern.mod3 at gmail.com)
 
@@ -88,4 +88,3 @@ have configurable default values.
 ## License
 
 See {file:LICENSE.txt} for license information.
-

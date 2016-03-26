@@ -1,3 +1,26 @@
+### 0.4.4 / 2012-06-16
+
+* {Parameters::Options} now correctly parses escaped `\:` characters for Hash
+  parameters.
+
+### 0.4.3 / 2012-06-11
+
+* Allow defaulting Boolean parameters to `false`.
+* Guard against `nil` arguments in {Parameters::Options}, when merging
+  values into Hash or Array parameters.
+
+### 0.4.2 / 2012-05-28
+
+* Fixed a typo in the gemspec, which incorrectly set
+  `required_rubygems_version` to the same value as `required_ruby_version`.
+
+### 0.4.1 / 2012-05-27
+
+* Changed the default `USAGE` for Regexp parameters to `/REGEXP/`
+  in {Parameters::Options::USAGES}.
+* Replaced ore-tasks with
+  [rubygems-tasks](https://github.com/postmodern/rubygems-tasks#readme).
+
 ### 0.4.0 / 2011-12-29
 
 * Added {Parameters::Options}.
@@ -34,14 +57,14 @@
 
 ### 0.2.1 / 2010-05-05
 
-* Added {Parameters::ClassMethods#included}, so that
+* Added `Parameters::ClassMethods#included`, so that
   {Parameters::ClassMethods} can be re-extended by mixin modules which
   include {Parameters}.
-* Added {Parameters::Param#coerce_hash}.
+* Added `Parameters::Param#coerce_hash`.
 * Allow a `Proc` to be given as the coercion type for
-  {Parameters::Param#coerce_type}.
+  `Parameters::Param#coerce_type`.
 * Allow custom classes to be used for coercion types.
-* Ruby 1.8.6 bug fixes for {Parameters::Param#coerce_type}.
+* Ruby 1.8.6 bug fixes for `Parameters::Param#coerce_type`.
 
 ### 0.2.0 / 2010-02-18
 
